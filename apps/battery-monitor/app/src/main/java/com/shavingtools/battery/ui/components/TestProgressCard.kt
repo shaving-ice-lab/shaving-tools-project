@@ -66,7 +66,7 @@ fun TestProgressCard(
                     Spacer(modifier = Modifier.height(12.dp))
 
                     LinearProgressIndicator(
-                        progress = { (100 - testState.batteryLevel) / 100f },
+                        progress = (100 - testState.batteryLevel) / 100f,
                         modifier = Modifier.fillMaxWidth(),
                     )
 
