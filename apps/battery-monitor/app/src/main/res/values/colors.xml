@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="ic_launcher_background">#4CAF50</color>
+    <color name="ic_launcher_foreground">#FFFFFF</color>
+    
+    <color name="primary">#4CAF50</color>
+    <color name="primary_dark">#388E3C</color>
+    <color name="primary_light">#A5D6A7</color>
+    
+    <color name="battery_charging">#4CAF50</color>
+    <color name="battery_discharging">#2196F3</color>
+    <color name="battery_low">#F44336</color>
+    <color name="battery_medium">#FF9800</color>
+    <color name="battery_high">#4CAF50</color>
+    
+    <color name="temp_cold">#2196F3</color>
+    <color name="temp_normal">#4CAF50</color>
+    <color name="temp_warm">#FF9800</color>
+    <color name="temp_hot">#FF5722</color>
+    <color name="temp_overheat">#F44336</color>
+</resources>
