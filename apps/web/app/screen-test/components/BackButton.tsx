@@ -1,8 +1,8 @@
-"use client"
+'use client'
 
-import Link from 'next/link';
-import { Button } from '@/components/ui/button';
-import { ArrowLeft } from 'lucide-react';
+import Link from 'next/link'
+import { Button } from '@/components/ui/button'
+import { ArrowLeft } from 'lucide-react'
 
 export function BackButton() {
   return (
@@ -12,5 +12,5 @@ export function BackButton() {
         返回测试列表
       </Button>
     </Link>
-  );
+  )
 }

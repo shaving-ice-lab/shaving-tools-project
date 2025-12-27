@@ -1,21 +1,9 @@
-"use client"
+'use client'
 
-import Link from 'next/link';
-import { Card, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { TestConfig } from '../types';
-import {
-  Grid3x3,
-  Gauge,
-  Zap,
-  Palette,
-  Timer,
-  Sun,
-  Rainbow,
-  Contrast,
-  Flame,
-  Move3d,
-  LucideIcon,
-} from 'lucide-react';
+import Link from 'next/link'
+import { Card, CardHeader, CardTitle, CardDescription } from '@/components/ui/card'
+import { TestConfig } from '../types'
+import { Grid3x3, Gauge, Zap, Palette, Timer, Sun, Rainbow, Contrast, Flame, Move3d, LucideIcon } from 'lucide-react'
 
 const iconMap: Record<string, LucideIcon> = {
   Grid3x3,
@@ -28,14 +16,14 @@ const iconMap: Record<string, LucideIcon> = {
   Contrast,
   Flame,
   Move3d,
-};
+}
 
 interface TestCardProps {
-  config: TestConfig;
+  config: TestConfig
 }
 
 export function TestCard({ config }: TestCardProps) {
-  const Icon = iconMap[config.icon] || Grid3x3;
+  const Icon = iconMap[config.icon] || Grid3x3
 
   return (
     <Link href={config.path}>
@@ -53,5 +41,5 @@ export function TestCard({ config }: TestCardProps) {
         </CardHeader>
       </Card>
     </Link>
-  );
+  )
 }

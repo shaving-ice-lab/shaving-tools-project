@@ -1,4 +1,4 @@
-import { TestConfig } from '../types';
+import { TestConfig } from '../types'
 
 export const TEST_CONFIGS: TestConfig[] = [
   {
@@ -81,4 +81,4 @@ export const TEST_CONFIGS: TestConfig[] = [
     path: '/screen-test/viewing-angle',
     category: 'display',
   },
-];
+]

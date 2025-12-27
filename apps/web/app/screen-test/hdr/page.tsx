@@ -1,9 +1,9 @@
-"use client"
+'use client'
 
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
-import { Label } from '@/components/ui/label';
-import { Alert, AlertDescription } from '@/components/ui/alert';
-import { BackButton } from '../components/BackButton';
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card'
+import { Label } from '@/components/ui/label'
+import { Alert, AlertDescription } from '@/components/ui/alert'
+import { BackButton } from '../components/BackButton'
 
 export default function HDRTestPage() {
   return (
@@ -14,26 +14,20 @@ export default function HDRTestPage() {
         <Card>
           <CardHeader>
             <CardTitle>HDR显示效果测试</CardTitle>
-            <CardDescription>
-              测试屏幕的高动态范围显示能力
-            </CardDescription>
+            <CardDescription>测试屏幕的高动态范围显示能力</CardDescription>
           </CardHeader>
           <CardContent className="space-y-6">
             <div className="grid grid-cols-2 gap-4">
               <div className="bg-black p-6 rounded-lg">
                 <div className="text-white text-center">
                   <div className="font-medium">纯黑区域</div>
-                  <div className="text-xs text-gray-400 mt-1">
-                    应该完全黑暗（OLED）或接近黑暗（LCD）
-                  </div>
+                  <div className="text-xs text-gray-400 mt-1">应该完全黑暗（OLED）或接近黑暗（LCD）</div>
                 </div>
               </div>
               <div className="bg-white p-6 rounded-lg">
                 <div className="text-black text-center">
                   <div className="font-medium">纯白区域</div>
-                  <div className="text-xs text-gray-600 mt-1">
-                    应该足够明亮且不刺眼
-                  </div>
+                  <div className="text-xs text-gray-600 mt-1">应该足够明亮且不刺眼</div>
                 </div>
               </div>
             </div>
@@ -46,9 +40,7 @@ export default function HDRTestPage() {
                   background: 'linear-gradient(to right, #FFFFFF, #FFFFEE, #FFFFCC, #FFFF99, #FFFF66, #FFFF33, #FFFF00)',
                 }}
               />
-              <p className="text-xs text-muted-foreground">
-                应该能够区分从纯白到亮黄的所有层次
-              </p>
+              <p className="text-xs text-muted-foreground">应该能够区分从纯白到亮黄的所有层次</p>
             </div>
 
             <div className="space-y-2">
@@ -56,12 +48,11 @@ export default function HDRTestPage() {
               <div
                 className="h-24 rounded-lg"
                 style={{
-                  background: 'linear-gradient(to right, #000000, #050505, #0A0A0A, #0F0F0F, #141414, #191919, #1E1E1E, #232323, #282828, #2D2D2D, #323232)',
+                  background:
+                    'linear-gradient(to right, #000000, #050505, #0A0A0A, #0F0F0F, #141414, #191919, #1E1E1E, #232323, #282828, #2D2D2D, #323232)',
                 }}
               />
-              <p className="text-xs text-muted-foreground">
-                应该能够区分从纯黑到深灰的所有层次
-              </p>
+              <p className="text-xs text-muted-foreground">应该能够区分从纯黑到深灰的所有层次</p>
             </div>
 
             <div className="space-y-2">
@@ -70,9 +61,7 @@ export default function HDRTestPage() {
                 <div className="flex-1 bg-black" />
                 <div className="flex-1 bg-white" />
               </div>
-              <p className="text-xs text-muted-foreground">
-                黑白分界线应该清晰锐利，无光晕或渗色
-              </p>
+              <p className="text-xs text-muted-foreground">黑白分界线应该清晰锐利，无光晕或渗色</p>
             </div>
           </CardContent>
         </Card>
@@ -88,9 +77,7 @@ export default function HDRTestPage() {
                 background: 'linear-gradient(to right, #000000 0%, #111111 10%, #333333 30%, #666666 50%, #999999 70%, #CCCCCC 90%, #FFFFFF 100%)',
               }}
             />
-            <p className="text-xs text-muted-foreground">
-              HDR屏幕应该能同时保留高光和暗部的细节，普通SDR屏幕在极端亮度下会丢失细节
-            </p>
+            <p className="text-xs text-muted-foreground">HDR屏幕应该能同时保留高光和暗部的细节，普通SDR屏幕在极端亮度下会丢失细节</p>
           </CardContent>
         </Card>
 
@@ -107,5 +94,5 @@ export default function HDRTestPage() {
         </Alert>
       </div>
     </div>
-  );
+  )
 }

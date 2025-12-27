@@ -1,66 +1,66 @@
-"use client"
+'use client'
 
-import { useState, useRef, useEffect } from 'react';
-import { Button } from '@/components/ui/button';
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
-import { Alert, AlertDescription } from '@/components/ui/alert';
-import { BackButton } from '../components/BackButton';
-import { DEAD_PIXEL_COLORS } from '../lib/colors';
-import { Maximize, ChevronLeft, ChevronRight } from 'lucide-react';
+import { useState, useRef, useEffect } from 'react'
+import { Button } from '@/components/ui/button'
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card'
+import { Alert, AlertDescription } from '@/components/ui/alert'
+import { BackButton } from '../components/BackButton'
+import { DEAD_PIXEL_COLORS } from '../lib/colors'
+import { Maximize, ChevronLeft, ChevronRight } from 'lucide-react'
 
 export default function DeadPixelTestPage() {
-  const [colorIndex, setColorIndex] = useState(0);
-  const [isFullscreen, setIsFullscreen] = useState(false);
-  const containerRef = useRef<HTMLDivElement>(null);
+  const [colorIndex, setColorIndex] = useState(0)
+  const [isFullscreen, setIsFullscreen] = useState(false)
+  const containerRef = useRef<HTMLDivElement>(null)
 
-  const currentColor = DEAD_PIXEL_COLORS[colorIndex];
+  const currentColor = DEAD_PIXEL_COLORS[colorIndex]
 
   const enterFullscreen = async () => {
     if (containerRef.current && document.fullscreenEnabled) {
       try {
-        await containerRef.current.requestFullscreen();
-        setIsFullscreen(true);
+        await containerRef.current.requestFullscreen()
+        setIsFullscreen(true)
       } catch (error) {
-        console.error('Fullscreen request failed:', error);
+        console.error('Fullscreen request failed:', error)
       }
     }
-  };
+  }
 
   const nextColor = () => {
-    setColorIndex(prev => (prev + 1) % DEAD_PIXEL_COLORS.length);
-  };
+    setColorIndex(prev => (prev + 1) % DEAD_PIXEL_COLORS.length)
+  }
 
   const prevColor = () => {
-    setColorIndex(prev => (prev - 1 + DEAD_PIXEL_COLORS.length) % DEAD_PIXEL_COLORS.length);
-  };
+    setColorIndex(prev => (prev - 1 + DEAD_PIXEL_COLORS.length) % DEAD_PIXEL_COLORS.length)
+  }
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === ' ' || e.key === 'ArrowRight') {
-        e.preventDefault();
-        nextColor();
+        e.preventDefault()
+        nextColor()
       }
       if (e.key === 'ArrowLeft') {
-        e.preventDefault();
-        prevColor();
+        e.preventDefault()
+        prevColor()
       }
       if (e.key === 'Escape') {
-        setIsFullscreen(false);
+        setIsFullscreen(false)
       }
-    };
+    }
 
     const handleFullscreenChange = () => {
-      setIsFullscreen(!!document.fullscreenElement);
-    };
+      setIsFullscreen(!!document.fullscreenElement)
+    }
 
-    window.addEventListener('keydown', handleKeyDown);
-    document.addEventListener('fullscreenchange', handleFullscreenChange);
+    window.addEventListener('keydown', handleKeyDown)
+    document.addEventListener('fullscreenchange', handleFullscreenChange)
 
     return () => {
-      window.removeEventListener('keydown', handleKeyDown);
-      document.removeEventListener('fullscreenchange', handleFullscreenChange);
-    };
-  }, []);
+      window.removeEventListener('keydown', handleKeyDown)
+      document.removeEventListener('fullscreenchange', handleFullscreenChange)
+    }
+  }, [])
 
   return (
     <div className="container mx-auto px-4 py-8 max-w-4xl">
@@ -70,9 +70,7 @@ export default function DeadPixelTestPage() {
         <Card>
           <CardHeader>
             <CardTitle>坏点检测</CardTitle>
-            <CardDescription>
-              通过纯色背景检测屏幕坏点、亮点、暗点
-            </CardDescription>
+            <CardDescription>通过纯色背景检测屏幕坏点、亮点、暗点</CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
             <div
@@ -87,11 +85,7 @@ export default function DeadPixelTestPage() {
                   开始全屏检测
                 </Button>
               )}
-              {isFullscreen && (
-                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-white/50 text-sm">
-                  点击切换颜色 | ESC 退出
-                </div>
-              )}
+              {isFullscreen && <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-white/50 text-sm">点击切换颜色 | ESC 退出</div>}
             </div>
 
             <div className="flex items-center justify-between">
@@ -139,5 +133,5 @@ export default function DeadPixelTestPage() {
         </Card>
       </div>
     </div>
-  );
+  )
 }

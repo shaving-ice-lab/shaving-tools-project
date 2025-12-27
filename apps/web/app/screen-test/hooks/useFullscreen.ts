@@ -1,50 +1,50 @@
-"use client"
+'use client'
 
-import { useState, useCallback, useEffect, RefObject } from 'react';
+import { useState, useCallback, useEffect, RefObject } from 'react'
 
 export function useFullscreen(ref: RefObject<HTMLElement>) {
-  const [isFullscreen, setIsFullscreen] = useState(false);
+  const [isFullscreen, setIsFullscreen] = useState(false)
 
   const enterFullscreen = useCallback(async () => {
     if (ref.current && document.fullscreenEnabled) {
       try {
-        await ref.current.requestFullscreen();
-        setIsFullscreen(true);
+        await ref.current.requestFullscreen()
+        setIsFullscreen(true)
       } catch (error) {
-        console.error('Fullscreen request failed:', error);
+        console.error('Fullscreen request failed:', error)
       }
     }
-  }, [ref]);
+  }, [ref])
 
   const exitFullscreen = useCallback(async () => {
     if (document.fullscreenElement) {
       try {
-        await document.exitFullscreen();
-        setIsFullscreen(false);
+        await document.exitFullscreen()
+        setIsFullscreen(false)
       } catch (error) {
-        console.error('Exit fullscreen failed:', error);
+        console.error('Exit fullscreen failed:', error)
       }
     }
-  }, []);
+  }, [])
 
   const toggleFullscreen = useCallback(() => {
     if (isFullscreen) {
-      exitFullscreen();
+      exitFullscreen()
     } else {
-      enterFullscreen();
+      enterFullscreen()
     }
-  }, [isFullscreen, enterFullscreen, exitFullscreen]);
+  }, [isFullscreen, enterFullscreen, exitFullscreen])
 
   useEffect(() => {
     const handleFullscreenChange = () => {
-      setIsFullscreen(!!document.fullscreenElement);
-    };
+      setIsFullscreen(!!document.fullscreenElement)
+    }
 
-    document.addEventListener('fullscreenchange', handleFullscreenChange);
+    document.addEventListener('fullscreenchange', handleFullscreenChange)
     return () => {
-      document.removeEventListener('fullscreenchange', handleFullscreenChange);
-    };
-  }, []);
+      document.removeEventListener('fullscreenchange', handleFullscreenChange)
+    }
+  }, [])
 
   return {
     isFullscreen,
@@ -52,5 +52,5 @@ export function useFullscreen(ref: RefObject<HTMLElement>) {
     exitFullscreen,
     toggleFullscreen,
     isSupported: typeof document !== 'undefined' && document.fullscreenEnabled,
-  };
+  }
 }

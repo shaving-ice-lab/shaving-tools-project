@@ -1,39 +1,39 @@
-"use client"
+'use client'
 
-import { useState, useRef, useEffect } from 'react';
-import { Button } from '@/components/ui/button';
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
-import { Alert, AlertDescription } from '@/components/ui/alert';
-import { BackButton } from '../components/BackButton';
-import { BURN_IN_COLORS } from '../lib/colors';
-import { Maximize } from 'lucide-react';
+import { useState, useRef, useEffect } from 'react'
+import { Button } from '@/components/ui/button'
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card'
+import { Alert, AlertDescription } from '@/components/ui/alert'
+import { BackButton } from '../components/BackButton'
+import { BURN_IN_COLORS } from '../lib/colors'
+import { Maximize } from 'lucide-react'
 
 export default function BurnInTestPage() {
-  const [testColor, setTestColor] = useState('#808080');
-  const [isFullscreen, setIsFullscreen] = useState(false);
-  const containerRef = useRef<HTMLDivElement>(null);
+  const [testColor, setTestColor] = useState('#808080')
+  const [isFullscreen, setIsFullscreen] = useState(false)
+  const containerRef = useRef<HTMLDivElement>(null)
 
   const enterFullscreen = async () => {
     if (containerRef.current && document.fullscreenEnabled) {
       try {
-        await containerRef.current.requestFullscreen();
-        setIsFullscreen(true);
+        await containerRef.current.requestFullscreen()
+        setIsFullscreen(true)
       } catch (error) {
-        console.error('Fullscreen request failed:', error);
+        console.error('Fullscreen request failed:', error)
       }
     }
-  };
+  }
 
   useEffect(() => {
     const handleFullscreenChange = () => {
-      setIsFullscreen(!!document.fullscreenElement);
-    };
+      setIsFullscreen(!!document.fullscreenElement)
+    }
 
-    document.addEventListener('fullscreenchange', handleFullscreenChange);
+    document.addEventListener('fullscreenchange', handleFullscreenChange)
     return () => {
-      document.removeEventListener('fullscreenchange', handleFullscreenChange);
-    };
-  }, []);
+      document.removeEventListener('fullscreenchange', handleFullscreenChange)
+    }
+  }, [])
 
   return (
     <div className="container mx-auto px-4 py-8 max-w-4xl">
@@ -43,9 +43,7 @@ export default function BurnInTestPage() {
         <Card>
           <CardHeader>
             <CardTitle>OLED烧屏检测</CardTitle>
-            <CardDescription>
-              检测OLED屏幕是否存在老化/烧屏痕迹
-            </CardDescription>
+            <CardDescription>检测OLED屏幕是否存在老化/烧屏痕迹</CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
             <div
@@ -60,20 +58,12 @@ export default function BurnInTestPage() {
                   全屏检测
                 </Button>
               )}
-              {isFullscreen && (
-                <div className="text-white/50 text-sm">
-                  点击退出全屏
-                </div>
-              )}
+              {isFullscreen && <div className="text-white/50 text-sm">点击退出全屏</div>}
             </div>
 
             <div className="flex flex-wrap gap-2">
               {BURN_IN_COLORS.map(color => (
-                <Button
-                  key={color.value}
-                  variant={testColor === color.value ? 'default' : 'outline'}
-                  onClick={() => setTestColor(color.value)}
-                >
+                <Button key={color.value} variant={testColor === color.value ? 'default' : 'outline'} onClick={() => setTestColor(color.value)}>
                   {color.name}
                 </Button>
               ))}
@@ -107,5 +97,5 @@ export default function BurnInTestPage() {
         </Card>
       </div>
     </div>
-  );
+  )
 }

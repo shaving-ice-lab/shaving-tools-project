@@ -1,19 +1,19 @@
-"use client"
+'use client'
 
-import { useState } from 'react';
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
-import { Switch } from '@/components/ui/switch';
-import { Label } from '@/components/ui/label';
-import { Slider } from '@/components/ui/slider';
-import { Alert, AlertDescription } from '@/components/ui/alert';
-import { BackButton } from '../components/BackButton';
+import { useState } from 'react'
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card'
+import { Switch } from '@/components/ui/switch'
+import { Label } from '@/components/ui/label'
+import { Slider } from '@/components/ui/slider'
+import { Alert, AlertDescription } from '@/components/ui/alert'
+import { BackButton } from '../components/BackButton'
 
 export default function UniformityTestPage() {
-  const [brightness, setBrightness] = useState(50);
-  const [showGrid, setShowGrid] = useState(true);
+  const [brightness, setBrightness] = useState(50)
+  const [showGrid, setShowGrid] = useState(true)
 
-  const grayValue = Math.round((brightness / 100) * 255);
-  const bgColor = `rgb(${grayValue}, ${grayValue}, ${grayValue})`;
+  const grayValue = Math.round((brightness / 100) * 255)
+  const bgColor = `rgb(${grayValue}, ${grayValue}, ${grayValue})`
 
   return (
     <div className="container mx-auto px-4 py-8 max-w-4xl">
@@ -23,25 +23,15 @@ export default function UniformityTestPage() {
         <Card>
           <CardHeader>
             <CardTitle>亮度均匀性测试</CardTitle>
-            <CardDescription>
-              在暗室中观察屏幕各区域亮度是否一致
-            </CardDescription>
+            <CardDescription>在暗室中观察屏幕各区域亮度是否一致</CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
-            <div
-              className="w-full h-64 md:h-96 rounded-lg relative"
-              style={{ backgroundColor: bgColor }}
-            >
+            <div className="w-full h-64 md:h-96 rounded-lg relative" style={{ backgroundColor: bgColor }}>
               {showGrid && (
                 <div className="absolute inset-0 grid grid-cols-3 grid-rows-3">
                   {Array.from({ length: 9 }, (_, i) => (
-                    <div
-                      key={i}
-                      className="border border-white/20 flex items-center justify-center"
-                    >
-                      <span className="text-white/50 text-sm">
-                        区域 {i + 1}
-                      </span>
+                    <div key={i} className="border border-white/20 flex items-center justify-center">
+                      <span className="text-white/50 text-sm">区域 {i + 1}</span>
                     </div>
                   ))}
                 </div>
@@ -53,21 +43,11 @@ export default function UniformityTestPage() {
                 <Label>亮度级别</Label>
                 <span className="text-muted-foreground">{brightness}%</span>
               </div>
-              <Slider
-                value={[brightness]}
-                onValueChange={([v]) => setBrightness(v)}
-                min={0}
-                max={100}
-                step={1}
-              />
+              <Slider value={[brightness]} onValueChange={([v]) => setBrightness(v)} min={0} max={100} step={1} />
             </div>
 
             <div className="flex items-center gap-2">
-              <Switch
-                id="show-grid"
-                checked={showGrid}
-                onCheckedChange={setShowGrid}
-              />
+              <Switch id="show-grid" checked={showGrid} onCheckedChange={setShowGrid} />
               <Label htmlFor="show-grid">显示九宫格</Label>
             </div>
 
@@ -85,5 +65,5 @@ export default function UniformityTestPage() {
         </Card>
       </div>
     </div>
-  );
+  )
 }

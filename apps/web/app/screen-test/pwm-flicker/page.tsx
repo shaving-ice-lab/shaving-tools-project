@@ -1,57 +1,61 @@
-"use client"
+'use client'
 
-import { useState, useRef, useEffect } from 'react';
-import { Button } from '@/components/ui/button';
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
-import { Alert, AlertDescription } from '@/components/ui/alert';
-import { BackButton } from '../components/BackButton';
-import { PWM_CONFIGS } from '../lib/colors';
-import { Play, Pause } from 'lucide-react';
+import { useState, useRef, useEffect } from 'react'
+import { Button } from '@/components/ui/button'
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card'
+import { Alert, AlertDescription } from '@/components/ui/alert'
+import { BackButton } from '../components/BackButton'
+import { PWM_CONFIGS } from '../lib/colors'
+import { Play, Pause } from 'lucide-react'
 
 export default function PWMFlickerTestPage() {
-  const [isRunning, setIsRunning] = useState(false);
-  const [selectedFreq, setSelectedFreq] = useState(240);
-  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const [isRunning, setIsRunning] = useState(false)
+  const [selectedFreq, setSelectedFreq] = useState(240)
+  const canvasRef = useRef<HTMLCanvasElement>(null)
 
-  const selectedConfig = PWM_CONFIGS.find(c => c.frequency === selectedFreq);
+  const selectedConfig = PWM_CONFIGS.find(c => c.frequency === selectedFreq)
 
   useEffect(() => {
-    if (!isRunning || !canvasRef.current) return;
+    if (!isRunning || !canvasRef.current) return
 
-    const canvas = canvasRef.current;
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return;
+    const canvas = canvasRef.current
+    const ctx = canvas.getContext('2d')
+    if (!ctx) return
 
-    let isWhite = true;
-    const intervalMs = 1000 / (selectedFreq * 2);
+    let isWhite = true
+    const intervalMs = 1000 / (selectedFreq * 2)
 
     const interval = setInterval(() => {
-      ctx.fillStyle = isWhite ? '#FFFFFF' : '#000000';
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-      isWhite = !isWhite;
-    }, intervalMs);
+      ctx.fillStyle = isWhite ? '#FFFFFF' : '#000000'
+      ctx.fillRect(0, 0, canvas.width, canvas.height)
+      isWhite = !isWhite
+    }, intervalMs)
 
-    return () => clearInterval(interval);
-  }, [isRunning, selectedFreq]);
+    return () => clearInterval(interval)
+  }, [isRunning, selectedFreq])
 
   useEffect(() => {
     if (!isRunning && canvasRef.current) {
-      const ctx = canvasRef.current.getContext('2d');
+      const ctx = canvasRef.current.getContext('2d')
       if (ctx) {
-        ctx.fillStyle = '#808080';
-        ctx.fillRect(0, 0, canvasRef.current.width, canvasRef.current.height);
+        ctx.fillStyle = '#808080'
+        ctx.fillRect(0, 0, canvasRef.current.width, canvasRef.current.height)
       }
     }
-  }, [isRunning]);
+  }, [isRunning])
 
   const getRiskColor = (risk: string) => {
     switch (risk) {
-      case 'high': return 'text-red-500';
-      case 'medium': return 'text-yellow-500';
-      case 'low': return 'text-green-500';
-      default: return '';
+      case 'high':
+        return 'text-red-500'
+      case 'medium':
+        return 'text-yellow-500'
+      case 'low':
+        return 'text-green-500'
+      default:
+        return ''
     }
-  };
+  }
 
   return (
     <div className="container mx-auto px-4 py-8 max-w-4xl">
@@ -61,9 +65,7 @@ export default function PWMFlickerTestPage() {
         <Card>
           <CardHeader>
             <CardTitle>PWM频闪检测</CardTitle>
-            <CardDescription>
-              用手机相机对准屏幕拍摄，如果看到条纹则说明存在PWM频闪
-            </CardDescription>
+            <CardDescription>用手机相机对准屏幕拍摄，如果看到条纹则说明存在PWM频闪</CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="flex flex-wrap gap-2">
@@ -82,24 +84,11 @@ export default function PWMFlickerTestPage() {
               ))}
             </div>
 
-            {selectedConfig && (
-              <div className="text-sm text-muted-foreground">
-                {selectedConfig.description}
-              </div>
-            )}
+            {selectedConfig && <div className="text-sm text-muted-foreground">{selectedConfig.description}</div>}
 
-            <canvas
-              ref={canvasRef}
-              width={400}
-              height={300}
-              className="w-full h-64 border rounded-lg"
-            />
+            <canvas ref={canvasRef} width={400} height={300} className="w-full h-64 border rounded-lg" />
 
-            <Button
-              className="w-full gap-2"
-              onClick={() => setIsRunning(!isRunning)}
-              variant={isRunning ? 'destructive' : 'default'}
-            >
+            <Button className="w-full gap-2" onClick={() => setIsRunning(!isRunning)} variant={isRunning ? 'destructive' : 'default'}>
               {isRunning ? (
                 <>
                   <Pause className="h-4 w-4" />
@@ -128,5 +117,5 @@ export default function PWMFlickerTestPage() {
         </Card>
       </div>
     </div>
-  );
+  )
 }

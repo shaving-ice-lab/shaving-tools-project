@@ -1,4 +1,4 @@
-import { ColorConfig, PWMTestConfig, ColorGamutConfig } from '../types';
+import { ColorConfig, PWMTestConfig, ColorGamutConfig } from '../types'
 
 export const DEAD_PIXEL_COLORS: ColorConfig[] = [
   { name: '纯白', value: '#FFFFFF', description: '检测黑点/暗点' },
@@ -7,7 +7,7 @@ export const DEAD_PIXEL_COLORS: ColorConfig[] = [
   { name: '纯绿', value: '#00FF00', description: '检测绿色子像素' },
   { name: '纯蓝', value: '#0000FF', description: '检测蓝色子像素' },
   { name: '灰色50%', value: '#808080', description: '检测亮度不均' },
-];
+]
 
 export const COLOR_CHECKER_COLORS: ColorConfig[] = [
   { name: 'Dark Skin', value: '#735244' },
@@ -34,7 +34,7 @@ export const COLOR_CHECKER_COLORS: ColorConfig[] = [
   { name: 'Neutral 5', value: '#7a7a79' },
   { name: 'Neutral 3.5', value: '#555555' },
   { name: 'Black', value: '#343434' },
-];
+]
 
 export const PWM_CONFIGS: PWMTestConfig[] = [
   { frequency: 60, name: '60Hz', description: '低频PWM，对眼睛伤害较大', risk: 'high' },
@@ -43,7 +43,7 @@ export const PWM_CONFIGS: PWMTestConfig[] = [
   { frequency: 480, name: '480Hz', description: '中高频PWM', risk: 'medium' },
   { frequency: 960, name: '960Hz', description: '高频PWM，相对护眼', risk: 'low' },
   { frequency: 1920, name: '1920Hz+', description: '超高频/DC调光，护眼', risk: 'low' },
-];
+]
 
 export const COLOR_GAMUTS: ColorGamutConfig[] = [
   {
@@ -64,11 +64,11 @@ export const COLOR_GAMUTS: ColorGamutConfig[] = [
       { name: 'P3 Blue', value: 'color(display-p3 0 0 1)' },
     ],
   },
-];
+]
 
 export const BURN_IN_COLORS: ColorConfig[] = [
   { name: '灰色', value: '#808080' },
   { name: '红色', value: '#FF0000' },
   { name: '绿色', value: '#00FF00' },
   { name: '蓝色', value: '#0000FF' },
-];
+]

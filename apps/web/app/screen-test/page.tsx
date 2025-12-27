@@ -1,10 +1,10 @@
-"use client"
+'use client'
 
-import { Monitor, ArrowLeft } from 'lucide-react';
-import Link from 'next/link';
-import { Button } from '@/components/ui/button';
-import { TestCard } from './components/TestCard';
-import { TEST_CONFIGS } from './lib/test-configs';
+import { Monitor, ArrowLeft } from 'lucide-react'
+import Link from 'next/link'
+import { Button } from '@/components/ui/button'
+import { TestCard } from './components/TestCard'
+import { TEST_CONFIGS } from './lib/test-configs'
 
 export default function ScreenTestPage() {
   const categories = [
@@ -12,7 +12,7 @@ export default function ScreenTestPage() {
     { id: 'color', name: '色彩测试', tests: TEST_CONFIGS.filter(t => t.category === 'color') },
     { id: 'motion', name: '动态测试', tests: TEST_CONFIGS.filter(t => t.category === 'motion') },
     { id: 'display', name: '显示测试', tests: TEST_CONFIGS.filter(t => t.category === 'display') },
-  ];
+  ]
 
   return (
     <div className="container mx-auto px-4 py-8 max-w-6xl">
@@ -31,18 +31,14 @@ export default function ScreenTestPage() {
         </div>
         <div>
           <h1 className="text-3xl font-bold">屏幕显示测试工具</h1>
-          <p className="text-muted-foreground mt-1">
-            专业级屏幕质量检测与分析
-          </p>
+          <p className="text-muted-foreground mt-1">专业级屏幕质量检测与分析</p>
         </div>
       </div>
 
       <div className="space-y-8">
         {categories.map(category => (
           <section key={category.id}>
-            <h2 className="text-xl font-semibold mb-4 text-muted-foreground">
-              {category.name}
-            </h2>
+            <h2 className="text-xl font-semibold mb-4 text-muted-foreground">{category.name}</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               {category.tests.map(test => (
                 <TestCard key={test.id} config={test} />
@@ -62,5 +58,5 @@ export default function ScreenTestPage() {
         </ul>
       </div>
     </div>
-  );
+  )
 }

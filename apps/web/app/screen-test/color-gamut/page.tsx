@@ -1,14 +1,14 @@
-"use client"
+'use client'
 
-import { useState } from 'react';
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Alert, AlertDescription } from '@/components/ui/alert';
-import { BackButton } from '../components/BackButton';
-import { COLOR_GAMUTS } from '../lib/colors';
+import { useState } from 'react'
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
+import { Alert, AlertDescription } from '@/components/ui/alert'
+import { BackButton } from '../components/BackButton'
+import { COLOR_GAMUTS } from '../lib/colors'
 
 export default function ColorGamutTestPage() {
-  const [activeGamut, setActiveGamut] = useState('sRGB');
+  const [activeGamut, setActiveGamut] = useState('sRGB')
 
   return (
     <div className="container mx-auto px-4 py-8 max-w-4xl">
@@ -18,9 +18,7 @@ export default function ColorGamutTestPage() {
         <Card>
           <CardHeader>
             <CardTitle>色域覆盖测试</CardTitle>
-            <CardDescription>
-              比较不同色域标准下的颜色显示能力
-            </CardDescription>
+            <CardDescription>比较不同色域标准下的颜色显示能力</CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
             <Tabs value={activeGamut} onValueChange={setActiveGamut}>
@@ -34,9 +32,7 @@ export default function ColorGamutTestPage() {
 
               {COLOR_GAMUTS.map(gamut => (
                 <TabsContent key={gamut.name} value={gamut.name}>
-                  <p className="text-sm text-muted-foreground mb-4">
-                    {gamut.description}
-                  </p>
+                  <p className="text-sm text-muted-foreground mb-4">{gamut.description}</p>
                   <div className="grid grid-cols-3 gap-4">
                     {gamut.colors.map(color => (
                       <div
@@ -44,9 +40,7 @@ export default function ColorGamutTestPage() {
                         className="aspect-video rounded-lg flex items-end justify-center pb-2"
                         style={{ backgroundColor: color.value }}
                       >
-                        <span className="text-white text-sm drop-shadow-lg">
-                          {color.name}
-                        </span>
+                        <span className="text-white text-sm drop-shadow-lg">{color.name}</span>
                       </div>
                     ))}
                   </div>
@@ -59,17 +53,11 @@ export default function ColorGamutTestPage() {
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <div className="text-sm text-muted-foreground mb-2">sRGB 红</div>
-                  <div
-                    className="h-20 rounded-lg"
-                    style={{ backgroundColor: '#FF0000' }}
-                  />
+                  <div className="h-20 rounded-lg" style={{ backgroundColor: '#FF0000' }} />
                 </div>
                 <div>
                   <div className="text-sm text-muted-foreground mb-2">P3 红</div>
-                  <div
-                    className="h-20 rounded-lg"
-                    style={{ backgroundColor: 'color(display-p3 1 0 0)' }}
-                  />
+                  <div className="h-20 rounded-lg" style={{ backgroundColor: 'color(display-p3 1 0 0)' }} />
                 </div>
               </div>
             </div>
@@ -89,5 +77,5 @@ export default function ColorGamutTestPage() {
         </Card>
       </div>
     </div>
-  );
+  )
 }
