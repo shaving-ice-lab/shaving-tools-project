@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SoC Analyzer</string>
+    <string name="tab_monitor">实时监控</string>
+    <string name="tab_benchmark">性能跑分</string>
+    <string name="tab_stress">压力测试</string>
+    <string name="tab_connection">连接设置</string>
+    <string name="connect">连接</string>
+    <string name="disconnect">断开</string>
+    <string name="status_connected">已连接</string>
+    <string name="status_disconnected">未连接</string>
+    <string name="status_connecting">连接中...</string>
+</resources>
