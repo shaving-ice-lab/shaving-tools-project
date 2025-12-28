@@ -4,9 +4,13 @@
   "private": true,
   "workspaces": [
     "apps/*",
+    "apps/game-fps-monitor/desktop",
     "packages/*"
   ],
   "scripts": {
+    "install:all": "pnpm install && pnpm run install:android",
+    "install:apps": "pnpm --filter './apps/*' install",
+    "install:android": "echo Android projects (battery-monitor, soc-analyzer-android, game-fps-monitor/android) require Gradle. Run gradlew build in each directory.",
     "build": "turbo run build",
     "dev": "turbo run dev",
     "lint": "turbo run lint",
